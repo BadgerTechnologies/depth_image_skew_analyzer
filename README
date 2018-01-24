@@ -4,7 +4,7 @@ on depthcam skew.
 To build:
 ---------
 Install some build dependencies
-sudo apt install libudev-dev libudev1 libusb-dev ros-kinetic-astra-launch
+sudo apt install libudev-dev libudev1 libusb-dev
 
 NOTE: Might also need libusb-1.0-0 and/or libusb-1.0-0-dev
 
@@ -13,8 +13,10 @@ In your catkin workspace:
 cd catkin_ws/src
 git clone https://github.com/BadgerTechnologies/ros_astra_camera.git
 cd ros_astra_camera.git
-git checkout -b features/temperature-sensor features/temperature-sensor
+git checkout -b features/temperature-sensor origin/features/temperature-sensor
 cd ..
+
+git clone https://github.com/BadgerTechnologies/ros_astra_launch.git
 
 
 catkin build (or catkin_make)
@@ -30,7 +32,7 @@ roscore&
 # Note that the default mode is 5 (480x640)
 rosparam set /camera/driver/depth_mode 11
 
-roslaunch astra_camera astrapro.launch
+roslaunch astra_launch astrapro.launch
 
 In another shell, run the python program:
 ./depth_image_skew_analyzer/depth_image_skew_analyzer
